@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
   --red: #951b1e;
   --white: #ffffff;
@@ -100,3 +101,102 @@ span {
   margin-left: 16px;
   text-shadow: 2px 2px 2px var(--red);
 }
+=======
+.navbar {
+  background-color: #0a061d;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.heading {
+  justify-content: center;
+  align-content: center;
+  text-shadow: 2px 2px 2px black;
+  text-transform: uppercase;
+  color: #f5f5f5;
+}
+
+.menu-bars {
+  margin-left: 2rem;
+  font-size: 2rem;
+  background: none;
+}
+
+.menu-bars1:hover {
+  background-color: green;
+}
+
+.nav-menu {
+  background-color: #0a061d;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: 850ms;
+  -webkit-transition: 850ms;
+  -moz-transition: 850ms;
+  -ms-transition: 850ms;
+  -o-transition: 850ms;
+}
+
+.nav-menu.active {
+  left: 0;
+  transition: 350ms;
+}
+
+.nav-text {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 0px 8px 16px;
+  list-style: none;
+  height: 60px;
+  /* text-shadow: 2px 2px 2px black; */
+}
+
+.nav-text a {
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 25px;
+  /* width: 95px; */
+  /* height: 100%; */
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  margin-top: 100px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.nav-text a:hover {
+  background-color: white;
+  color: black;
+  text-decoration: none;
+}
+
+.nav-menu-items {
+  width: 100%;
+}
+
+.navbar-toggle {
+  background-color: #0a061d;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+span {
+  margin-left: 16px;
+  text-shadow: 2px 2px 2px black;
+}
+>>>>>>> 89e0aeaa6695aab9cdc5626d1ed71fc47114e712

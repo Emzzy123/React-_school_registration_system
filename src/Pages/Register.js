@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 
 const Register = () => {
@@ -46,3 +47,14 @@ const Register = () => {
 };
 
 export default Register;
+=======
+const Register = () => {
+  return (
+    <div className="register">
+      <h1>Registration Page</h1>
+    </div>
+  );
+};
+
+export default Register;
+>>>>>>> 89e0aeaa6695aab9cdc5626d1ed71fc47114e712
