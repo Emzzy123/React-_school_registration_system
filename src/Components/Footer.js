@@ -21,6 +21,7 @@ const Footer = () => {
             <ul className="list-unstyled">
               <li>https://www.wlv.ac.uk</li>
               <li>01902321000</li>
+              <li>West Midland</li>
               <li>Wolverhampton, UK</li>
               <li>WV1 1LY</li>
             </ul>
