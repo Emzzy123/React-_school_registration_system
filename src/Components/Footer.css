@@ -1,0 +1,17 @@
+:root {
+  --red: #951b1e;
+  --white: #ffffff;
+  --black: #000;
+}
+
+.main-footer {
+  color: var(--white);
+  background-color: var(--black);
+  font-weight: bold;
+  padding-top: 3em;
+  bottom: 0;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
