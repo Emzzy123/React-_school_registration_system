@@ -25,7 +25,7 @@ body {
 .menu-bars {
   margin-left: 2rem;
   font-size: 2rem;
-  background: none;
+  /* background: black; */
 }
 
 .nav-menu {
