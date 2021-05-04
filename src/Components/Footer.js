@@ -1,5 +1,7 @@
 import React from "react";
 import "./Footer.css";
+import * as FaIcons from "react-icons/fa";
+import { IconContext } from "react-icons";
 
 const Footer = () => {
   return (
@@ -36,6 +38,45 @@ const Footer = () => {
               <li>WV10</li>
             </ul>
           </div>
+        </div>
+        <div>
+          <ul class="socials">
+            <IconContext.Provider value={{ color: "#2C1A2A" }}>
+              <li>
+                <a href="https://github.com/Emzzy123">
+                  <FaIcons.FaGithubSquare />
+                </a>
+              </li>
+            </IconContext.Provider>
+            <IconContext.Provider value={{ color: "#CE2F50" }}>
+              <li>
+                <a href="https://www.instagram.com/emzzy.c/">
+                  <FaIcons.FaInstagram />
+                </a>
+              </li>
+            </IconContext.Provider>
+            <IconContext.Provider value={{ color: "#DE1222" }}>
+              <li>
+                <a href="https://www.pinterest.co.uk/chidokae/">
+                  <FaIcons.FaPinterestSquare />
+                </a>
+              </li>
+            </IconContext.Provider>
+            <IconContext.Provider value={{ color: "#006EAB" }}>
+              <li>
+                <a href="https://www.linkedin.com/in/emeka-chidoka-a4a633158/">
+                  <FaIcons.FaLinkedinIn />
+                </a>
+              </li>
+            </IconContext.Provider>
+            <IconContext.Provider value={{ color: "#42D251" }}>
+              <li>
+                <a href="https://wa.me/+447448786966">
+                  <FaIcons.FaWhatsappSquare />
+                </a>
+              </li>
+            </IconContext.Provider>
+          </ul>
         </div>
         <hr />
         <div className="row">

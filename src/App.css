@@ -7,9 +7,11 @@
   font-family: "Lato", sans-serif;
 }
 
-/* .App {
-  text-align: center;
-} */
+.alignment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .page-container {
   display: flex;

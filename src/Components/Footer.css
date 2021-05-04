@@ -1,4 +1,4 @@
-:root {
+root {
   --red: #951b1e;
   --white: #ffffff;
   --black: #000;
@@ -14,4 +14,16 @@
   width: 100%;
   text-align: center;
   justify-content: center;
+}
+
+.socials {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.socials a {
+  text-decoration: none;
+  color: white;
 }

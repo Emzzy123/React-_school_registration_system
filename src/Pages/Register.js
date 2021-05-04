@@ -8,11 +8,10 @@ const Register = () => {
   function SignUp() {
     //convert to object
     let item = { name, password, email };
-    console.warn(item);
   }
 
   return (
-    <div className="col-sm-6 offset-sm-3">
+    <div className="col-sm-6 offset-sm-3 ">
       <h1>Student Registration Page</h1>
       <input
         type="text"
