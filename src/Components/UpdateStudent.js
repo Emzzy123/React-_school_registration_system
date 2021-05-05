@@ -1,6 +1,8 @@
+import Navbar from "./Navbar";
 const UpdateStudent = () => {
   return (
-    <div className="update">
+    <div>
+      <Navbar />
       <h1>UpdateStudent Page</h1>
     </div>
   );

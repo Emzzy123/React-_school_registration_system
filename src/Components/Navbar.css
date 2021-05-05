@@ -9,9 +9,18 @@ body {
 .navbar {
   background-color: var(--red);
   height: 80px;
-  /* justify-content: center;
-  align-items: start;
-  display: flex; */
+}
+
+.listdiv {
+  text-align: center;
+  margin: 100px 5px 0px 5px;
+  text-decoration: none;
+  list-style: none;
+  font-size: xx-large;
+}
+.listdiv p:hover {
+  background-color: var(--white);
+  text-shadow: 2px 2px 5px black;
 }
 
 .heading {
