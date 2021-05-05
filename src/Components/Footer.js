@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="row">
           {/* Column 1  */}
           <div className="col">
-            <h4>SCHOOL REGISTRATION SYSTEM</h4>
+            <h4>School Registration System</h4>
             <ul className="list-unstyled">
               <li>+447448786966</li>
               <li>Wolverhampton, UK</li>
@@ -19,7 +19,7 @@ const Footer = () => {
           </div>
           {/* Column 2  */}
           <div className="col">
-            <h4>UNIVERSITY OF WOLVERHAMPTON</h4>
+            <h4>University of Wolverhampton</h4>
             <ul className="list-unstyled">
               <li>https://www.wlv.ac.uk</li>
               <li>01902321000</li>
