@@ -22,39 +22,21 @@ class Register extends Component {
     e.preventDefault();
     console.log(this.state);
 
-    // axios
-    //   .post(
-    //     "https://mi-linux.wlv.ac.uk/~2024684/ci3_restapi/index.php/user/students",
-    //     this.state
-    //   )
-    //   .then((response) => {
-    //     console.log(response);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-
-    // const rest = await axios.get("/user/students");
-    // console.log(rest);
-
-    const rest = await axios.post("user/students", { ...this.state });
-    console.log(rest);
-
-    // let url =
-    //   "https://mi-linux.wlv.ac.uk/~2024684/ci3_restapi/index.php/user/index";
-    // let data = this.state;
-    // fetch(url, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Accept: "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // }).then((result) => {
-    //   result.json().then((resp) => {
-    //     console.warn("resp", resp);
-    //   });
-    // });
+    const form = document.querySelector("form");
+    var data = new FormData(form);
+    axios({
+      method: "post",
+      url:
+        "https://mi-linux.wlv.ac.uk/~2024684/ci3_restapi/index.php/user/add_student",
+      data: data,
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (response) {
+        console.log(response);
+      });
   };
 
   render() {
@@ -73,21 +55,21 @@ class Register extends Component {
           />
           <br />
           <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.changeHandler}
-            className="form-control"
-            placeholder="password"
-          />
-          <br />
-          <input
             type="text"
             name="email"
             value={email}
             onChange={this.changeHandler}
             className="form-control"
             placeholder="email"
+          />
+          <br />
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={this.changeHandler}
+            className="form-control"
+            placeholder="password"
           />
           <br />
           <button type="submit" className="btn btn-primary">
