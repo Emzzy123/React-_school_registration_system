@@ -5,7 +5,7 @@ import * as FaIcons from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import { IconContext } from "react-icons";
-import { Button } from "react-bootstrap";
+import { Button, Nav, NavDropdown } from "react-bootstrap";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -90,6 +90,11 @@ function Navbar() {
                 </li>
               );
             })} */}
+            <Nav>
+              <NavDropdown title="User Name">
+                <NavDropdown.Item>Logout</NavDropdown.Item>?
+              </NavDropdown>
+            </Nav>
           </ul>
         </nav>
       </IconContext.Provider>

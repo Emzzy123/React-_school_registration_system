@@ -1,4 +1,3 @@
-import Navbar from "./Navbar";
 import { useHistory } from "react-router-dom";
 import React, { useEffect } from "react";
 
