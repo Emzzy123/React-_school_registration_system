@@ -2,15 +2,21 @@ import "./Navbar.css";
 import { useState } from "react";
 import React from "react";
 import * as FaIcons from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import { IconContext } from "react-icons";
-import { Button, Nav, NavDropdown } from "react-bootstrap";
+import { Nav, NavDropdown } from "react-bootstrap";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
-
   const showSidebar = () => setSidebar(!sidebar);
+
+  let user = JSON.parse(localStorage.getItem("user-info"));
+  const history = useHistory();
+  function logout() {
+    localStorage.clear();
+    history.push("/Register");
+  }
 
   return (
     <>
@@ -26,7 +32,18 @@ function Navbar() {
           <Link to="/" className="navmenubar">
             <h1 className="heading">School Registration System</h1>
           </Link>
-          <Button className="bg-white text-dark font-weight-bold">SRS</Button>
+          {localStorage.getItem("user-info") ? (
+            <Nav>
+              <NavDropdown title={user && user.name} id="nav-dropdown">
+                <NavDropdown.Item id="nav-dropdown1" onClick={logout}>
+                  {" "}
+                  Logout{" "}
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          ) : (
+            <button className="smiley">🏫</button>
+          )}
         </div>
 
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
@@ -90,11 +107,6 @@ function Navbar() {
                 </li>
               );
             })} */}
-            <Nav>
-              <NavDropdown title="User Name">
-                <NavDropdown.Item>Logout</NavDropdown.Item>?
-              </NavDropdown>
-            </Nav>
           </ul>
         </nav>
       </IconContext.Provider>

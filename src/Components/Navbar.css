@@ -11,6 +11,17 @@ body {
   height: 80px;
 }
 
+#nav-dropdown {
+  color: var(--white);
+  font-weight: bold;
+  background-color: var(--black);
+}
+#nav-dropdown1 {
+  color: var(--black);
+  font-weight: bold;
+  background-color: var(--white);
+}
+
 .listdiv {
   text-align: center;
   margin: 100px 5px 0px 5px;
@@ -107,4 +118,10 @@ body {
 span {
   margin-left: 16px;
   text-shadow: 2px 2px 2px var(--red);
+}
+
+.smiley {
+  background-color: var(--red);
+  border: none;
+  font-size: xx-large;
 }
