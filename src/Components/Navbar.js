@@ -3,7 +3,7 @@ import { useState } from "react";
 import React from "react";
 import * as FaIcons from "react-icons/fa";
 import { Link, useHistory } from "react-router-dom";
-//import { SidebarData } from "./SidebarData";
+import { SidebarData } from "./SidebarData";
 import { IconContext } from "react-icons";
 import { Nav, NavDropdown } from "react-bootstrap";
 

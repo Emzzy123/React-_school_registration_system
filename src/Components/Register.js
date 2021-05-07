@@ -4,13 +4,12 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 function Register() {
+  const history = useHistory();
   useEffect(() => {
     if (localStorage.getItem("user-info")) {
       history.push("/add");
     }
   }, []);
-
-  const history = useHistory();
 
   async function submitHandler() {
     const form = document.querySelector("form");

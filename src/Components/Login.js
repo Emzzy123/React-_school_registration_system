@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import React, { useEffect } from "react";
 import axios from "axios";
 
-const Login = () => {
+function Login() {
   const history = useHistory();
   useEffect(() => {
     if (localStorage.getItem("user-info")) {
@@ -34,6 +34,7 @@ const Login = () => {
       object[key] = value;
     });
     var json = JSON.stringify(object);
+
     localStorage.setItem("user-info", json);
     history.push("/add");
   }
@@ -71,6 +72,6 @@ const Login = () => {
       </form>
     </div>
   );
-};
+}
 
 export default Login;
