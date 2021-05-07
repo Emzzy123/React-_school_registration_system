@@ -12,7 +12,7 @@ function Register() {
 
   const history = useHistory();
 
-    async function submitHandler() {
+  async function submitHandler() {
     const form = document.querySelector("form");
     var data = new FormData(form);
 
@@ -43,7 +43,11 @@ function Register() {
       <Navbar />
       <form onSubmit={submitHandler}>
         <div className="col-sm-6 offset-sm-3">
-          <h1>Student Registration Page</h1>
+          <br />
+          <center>
+            <h1>Student Registration Page</h1>
+          </center>
+          <br />
           <input
             type="text"
             name="name"
