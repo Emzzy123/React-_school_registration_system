@@ -12,7 +12,7 @@ function Register() {
 
   const history = useHistory();
 
-  async function submitHandler() {
+    async function submitHandler() {
     const form = document.querySelector("form");
     var data = new FormData(form);
 
