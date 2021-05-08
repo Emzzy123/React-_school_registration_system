@@ -1,7 +1,7 @@
 import Navbar from "./Navbar";
 import { useHistory } from "react-router-dom";
-import React, { useEffect } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Axios from "axios";
 
 function Login() {
   const history = useHistory();
@@ -11,66 +11,67 @@ function Login() {
     }
   }, []);
 
-  async function login() {
-    const form = document.querySelector("form");
-    var data = new FormData(form);
+  const url =
+    "https://mi-linux.wlv.ac.uk/~2024684/ci3_restapi/index.php/user/login";
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
 
-    axios({
-      method: "post",
-      url:
-        "https://mi-linux.wlv.ac.uk/~2024684/ci3_restapi/index.php/user/login",
-      data: data,
-      headers: { "Content-Type": "multipart/form-data" },
-    })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (response) {
-        console.log(response);
-      });
-
-    var object = {};
-    data.forEach(function (value, key) {
-      object[key] = value;
+  function submit(e) {
+    e.preventDefault();
+    Axios.post(url, {
+      date: data.email,
+      password: data.password,
+    }).then((res) => {
+      console.log(res.data);
     });
-    var json = JSON.stringify(object);
 
-    localStorage.setItem("user-info", json);
-    history.push("/add");
+    console.log(data);
+    localStorage.setItem("user-info", JSON.stringify(json));
+  }
+
+  function handle(e) {
+    const newdata = { ...data };
+    newdata[e.target.id] = e.target.value;
+    setData(newdata);
+    console.log(newdata);
   }
 
   return (
-    <div>
-      <form onSubmit={login}>
-        <Navbar />
-        <div className="col-sm-6 offset-sm-3">
-          <br />
+    <>
+      <Navbar />
+      <div className="col-sm-6 offset-sm-3">
+        <br />
+        <form onSubmit={(e) => submit(e)}>
           <center>
             <h1>Login Page</h1>
           </center>
           <br />
           <input
             type="text"
-            name="email"
+            onChange={(e) => handle(e)}
+            id="email"
+            value={data.email}
+            className="form-control"
             placeholder="email"
-            class="form-control"
           />
           <br />
           <input
             type="password"
-            name="password"
+            onChange={(e) => handle(e)}
+            id="password"
+            value={data.password}
+            className="form-control"
             placeholder="password"
-            class="form-control"
           />
           <br />
           <center>
-            <button type="submit" className="btn btn-primary">
-              Login
-            </button>
+            <button className="btn btn-primary">Sign up</button>
           </center>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
+    </>
   );
 }
 

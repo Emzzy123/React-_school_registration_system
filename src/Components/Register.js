@@ -14,7 +14,7 @@ function Register() {
   async function submitHandler() {
     const form = document.querySelector("form");
     var data = new FormData(form);
-
+    console.log(data);
     axios({
       method: "post",
       url:
@@ -68,9 +68,11 @@ function Register() {
             placeholder="password"
           />
           <br />
-          <button type="submit" className="btn btn-primary">
-            Sign up
-          </button>
+          <center>
+            <button type="submit" className="btn btn-primary">
+              Sign up
+            </button>
+          </center>
         </div>
       </form>
     </>

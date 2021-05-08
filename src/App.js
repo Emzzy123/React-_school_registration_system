@@ -1,6 +1,5 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./Components/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
@@ -16,7 +15,8 @@ function App() {
         <Router>
           {/* <Navbar /> */}
           <Switch>
-            <Route path="/add" exact>
+            <Route path="/" exact component={Login} />
+            <Route path="/add">
               <Protected Cmp={AddStudent} />
             </Route>
             <Route path="/update">
