@@ -1,7 +1,6 @@
+import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { useHistory } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import Axios from "axios";
 
 function Login() {
   const history = useHistory();
@@ -11,67 +10,57 @@ function Login() {
     }
   }, []);
 
-  const url =
-    "https://mi-linux.wlv.ac.uk/~2024684/ci3_restapi/index.php/user/login";
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  function submit(e) {
-    e.preventDefault();
-    Axios.post(url, {
-      email: data.email,
-      password: data.password,
-    }).then((res) => {
-      console.log(res.data);
+  async function login() {
+    let item = { email, password };
+
+    let result = await fetch("http://127.0.0.1:8000/api/login", {
+      method: "POST",
+      body: JSON.stringify(item),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "appplication/json",
+      },
     });
-
-    console.log(data);
-    localStorage.setItem("user-info", JSON.stringify(data));
-  }
-
-  function handle(e) {
-    const newdata = { ...data };
-    newdata[e.target.id] = e.target.value;
-    setData(newdata);
-    console.log(newdata);
+    result = await result.json();
+    localStorage.setItem("user-info", JSON.stringify(result));
+    history.push("/add");
   }
 
   return (
-    <>
+    <div>
       <Navbar />
       <div className="col-sm-6 offset-sm-3">
+        <center>
+          <h1>School Login Page</h1>
+        </center>
         <br />
-        <form onSubmit={(e) => submit(e)}>
-          <center>
-            <h1>Login Page</h1>
-          </center>
-          <br />
-          <input
-            type="text"
-            onChange={(e) => handle(e)}
-            id="email"
-            value={data.email}
-            className="form-control"
-            placeholder="email"
-          />
-          <br />
-          <input
-            type="password"
-            onChange={(e) => handle(e)}
-            id="password"
-            value={data.password}
-            className="form-control"
-            placeholder="password"
-          />
-          <br />
-          <center>
-            <button className="btn btn-primary">Sign up</button>
-          </center>
-        </form>
+
+        <input
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="form-control"
+          placeholder="email"
+        />
+        <br />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="form-control"
+          placeholder="password"
+        />
+        <br />
+        <center>
+          <button onClick={login} className="btn btn-primary">
+            Sign Up
+          </button>
+        </center>
       </div>
-    </>
+    </div>
   );
 }
 
