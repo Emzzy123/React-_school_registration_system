@@ -21,14 +21,14 @@ function Login() {
   function submit(e) {
     e.preventDefault();
     Axios.post(url, {
-      date: data.email,
+      email: data.email,
       password: data.password,
     }).then((res) => {
       console.log(res.data);
     });
 
     console.log(data);
-    localStorage.setItem("user-info", JSON.stringify(json));
+    localStorage.setItem("user-info", JSON.stringify(data));
   }
 
   function handle(e) {
