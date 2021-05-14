@@ -31,7 +31,7 @@ function Register() {
   }
 
   return (
-    <>
+    <div>
       <Navbar />
       <div className="col-sm-6 offset-sm-3">
         <center>
@@ -68,7 +68,7 @@ function Register() {
           </button>
         </center>
       </div>
-    </>
+    </div>
   );
 }
 
