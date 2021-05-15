@@ -21,7 +21,7 @@ function AddStudent() {
       method: "POST",
       body: formData,
     });
-    alert("Data saved  successfully!!!");
+    alert("Data saved  successfully!!!!");
   }
 
   return (
