@@ -14,6 +14,13 @@ function UpdateStudent(props) {
     setData(result);
   });
 
+  function updateOperation(id) {
+    fetch("http://127.0.0.1:8000/api/updatestudent/" + id, {
+      method: "POST",
+    });
+    alert("Data Updated");
+  }
+
   return (
     <div>
       <Navbar />
@@ -63,7 +70,11 @@ function UpdateStudent(props) {
           />
           <br />
           <br />
-          <button type="button" class="btn btn-success">
+          <button
+            onClick={updateOperation}
+            type="button"
+            class="btn btn-success"
+          >
             Update Student
           </button>
         </center>

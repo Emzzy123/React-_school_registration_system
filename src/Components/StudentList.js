@@ -32,8 +32,8 @@ function StudentList() {
         <br />
       </center>
       <div className="col-sm-8 offset-sm-2">
-        <Table>
-          <tr style={{ color: "#951b1e" }}>
+        <Table style={{ color: "#fff", backgroundColor: "black" }}>
+          <tr style={{ color: "#A40E0F", backgroundColor: "black" }}>
             <td>
               <strong>ID</strong>
             </td>
@@ -76,8 +76,6 @@ function StudentList() {
                 >
                   Delete
                 </span>
-              </td>
-              <td>
                 <Link to={"update/" + item.id}>
                   <span className="update">Update</span>
                 </Link>

@@ -8,6 +8,7 @@ import UpdateStudent from "./Components/UpdateStudent";
 import Footer from "./Components/Footer";
 import Protected from "./Components/Protected";
 import StudentList from "./Components/StudentList";
+import SearchStudent from "./Components/SearchStudent";
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
             </Route>
             <Route path="/update/:id">
               <Protected Cmp={UpdateStudent} />
+            </Route>
+            <Route path="/search">
+              <Protected Cmp={SearchStudent} />
             </Route>
             <Route path="/">
               <Protected Cmp={StudentList} />

@@ -83,6 +83,14 @@ function Navbar() {
                     Update Student
                   </Link>
                 </p>
+                <p>
+                  <Link
+                    to="/search"
+                    style={{ color: "#951b1e", textDecoration: "none" }}
+                  >
+                    Search Student
+                  </Link>
+                </p>
               </div>
             ) : (
               <div className="listdiv">
