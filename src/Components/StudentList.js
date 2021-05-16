@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/alt-text */
 import Navbar from "./Navbar";
 import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function StudentList() {
   const [data, setData] = useState([]);
@@ -74,6 +76,11 @@ function StudentList() {
                 >
                   Delete
                 </span>
+              </td>
+              <td>
+                <Link to={"update/" + item.id}>
+                  <span className="update">Update</span>
+                </Link>
               </td>
             </tr>
           ))}
