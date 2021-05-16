@@ -42,3 +42,15 @@
   -ms-border-radius: 25px;
   -o-border-radius: 25px;
 }
+
+.delete {
+  background-color: #a90b0b;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  cursor: pointer;
+}

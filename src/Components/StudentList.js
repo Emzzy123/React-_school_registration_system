@@ -4,12 +4,22 @@ import { Table } from "react-bootstrap";
 
 function StudentList() {
   const [data, setData] = useState([]);
-  useEffect(async () => {
+  useEffect(() => {
+    fetchData();
+  }, []);
+  async function deleteOperation(id) {
+    let result = await fetch("http://127.0.0.1:8000/api/delete/" + id, {
+      method: "DELETE",
+    });
+    result = await result.json();
+    console.warn(result);
+    fetchData();
+  }
+  async function fetchData() {
     let result = await fetch("http://127.0.0.1:8000/api/list");
     result = await result.json();
     setData(result);
-  }, []);
-  console.warn("result", data);
+  }
   return (
     <div>
       <Navbar />
@@ -40,6 +50,9 @@ function StudentList() {
             <td>
               <strong>IMAGE</strong>
             </td>
+            <td>
+              <strong>OPERATIONS</strong>
+            </td>
           </tr>
           {data.map((item) => (
             <tr>
@@ -53,6 +66,14 @@ function StudentList() {
                   style={{ width: 100 }}
                   src={"http://127.0.0.1:8000/" + item.file_path}
                 />
+              </td>
+              <td>
+                <span
+                  onClick={() => deleteOperation(item.id)}
+                  className="delete"
+                >
+                  Delete
+                </span>
               </td>
             </tr>
           ))}

@@ -10,7 +10,10 @@ body {
   background-color: var(--red);
   height: 80px;
 }
-
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
 #nav-dropdown {
   color: var(--white);
   font-weight: bold;
