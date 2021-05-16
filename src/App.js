@@ -7,23 +7,31 @@ import AddStudent from "./Components/AddStudent";
 import UpdateStudent from "./Components/UpdateStudent";
 import Footer from "./Components/Footer";
 import Protected from "./Components/Protected";
+import StudentList from "./Components/StudentList";
 
 function App() {
   return (
     <div className="page-container">
       <div className="content-wrap">
         <Router>
-          {/* <Navbar /> */}
           <Switch>
-            <Route path="/" exact component={Login} />
+            <Route path="/login">
+              {" "}
+              <Login />{" "}
+            </Route>
+            <Route path="/register">
+              {" "}
+              <Register />{" "}
+            </Route>
             <Route path="/add">
               <Protected Cmp={AddStudent} />
             </Route>
             <Route path="/update">
               <Protected Cmp={UpdateStudent} />
             </Route>
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
+            <Route path="/">
+              <Protected Cmp={StudentList} />
+            </Route>
           </Switch>
         </Router>
       </div>

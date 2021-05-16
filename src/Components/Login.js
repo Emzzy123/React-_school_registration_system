@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import { useHistory } from "react-router-dom";
@@ -18,11 +19,11 @@ function Login() {
 
     let result = await fetch("http://127.0.0.1:8000/api/login", {
       method: "POST",
-      body: JSON.stringify(item),
       headers: {
         "Content-Type": "application/json",
         Accept: "appplication/json",
       },
+      body: JSON.stringify(item),
     });
     result = await result.json();
     localStorage.setItem("user-info", JSON.stringify(result));
@@ -56,7 +57,7 @@ function Login() {
         <br />
         <center>
           <button onClick={login} className="btn btn-primary">
-            Sign Up
+            Login
           </button>
         </center>
       </div>

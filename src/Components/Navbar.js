@@ -3,7 +3,6 @@ import { useState } from "react";
 import React from "react";
 import * as FaIcons from "react-icons/fa";
 import { Link, useHistory } from "react-router-dom";
-import { SidebarData } from "./SidebarData";
 import { IconContext } from "react-icons";
 import { Nav, NavDropdown } from "react-bootstrap";
 
@@ -60,6 +59,14 @@ function Navbar() {
             </li>
             {localStorage.getItem("user-info") ? (
               <div className="listdiv">
+                <p>
+                  <Link
+                    to="/"
+                    style={{ color: "#951b1e", textDecoration: "none" }}
+                  >
+                    Student List
+                  </Link>
+                </p>
                 <p>
                   <Link
                     to="/add"
