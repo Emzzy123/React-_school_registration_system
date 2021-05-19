@@ -1,76 +1,87 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar";
-import { useHistory } from "react-router-dom";
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import Axios from "axios";
+import qs from "qs";
 
-function Register() {
-  const history = useHistory();
-  useEffect(() => {
-    if (localStorage.getItem("user-info")) {
-      history.push("/add");
-    }
-  }, []);
+class Register extends Component {
+  state = {
+    name: "",
+    email: "",
+    password: "",
+  };
 
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-
-  async function signUp() {
-    let item = { name, email, password };
-
-    let result = await fetch("http://127.0.0.1:8000/api/register", {
-      method: "POST",
-      body: JSON.stringify(item),
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "appplication/json",
-      },
+  onChange = (e) => {
+    this.setState({
+      ...this.state,
+      [e.target.name]: e.target.value,
     });
-    result = await result.json();
-    localStorage.setItem("user-info", JSON.stringify(result));
-    history.push("/add");
-  }
+  };
 
-  return (
-    <div>
-      <Navbar />
-      <div className="col-sm-6 offset-sm-3">
-        <center>
-          <h1>School Registration Page</h1>
-        </center>
-        <br />
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="form-control"
-          placeholder="name"
-        />
-        <br />
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="form-control"
-          placeholder="email"
-        />
-        <br />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="form-control"
-          placeholder="password"
-        />
-        <br />
-        <center>
-          <button onClick={signUp} className="btn btn-primary">
-            Sign Up
-          </button>
-        </center>
+  onSubmit = (e) => {
+    e.preventDefault();
+
+    const params = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+    };
+
+    Axios.post(
+      "https://mi-linux.wlv.ac.uk/~2024684/ci3_restapi/index.php/user/register",
+      qs.stringify(params)
+    ).then((resp) => {
+      console.log(resp);
+    });
+  };
+
+  render() {
+    // if (this.props.logged_in) {
+    //   return <Redirect to="/" />;
+    // }
+
+    return (
+      <div>
+        <div className="col-sm-6 offset-sm-3">
+          <center>
+            <h1>School Registration Page</h1>
+          </center>
+          <br />
+          <form onSubmit={this.onSubmit}>
+            <input
+              className="input form-control"
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={this.onChange}
+              placeholder="name"
+            />
+            <br />
+            <input
+              className="input form-control"
+              type="text"
+              name="email"
+              value={this.state.email}
+              onChange={this.onChange}
+              placeholder="email"
+            />
+            <br />
+            <input
+              className="input form-control"
+              type="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.onChange}
+              placeholder="password"
+            />
+            <br />
+            <center>
+              <button className="btn btn-success">Register</button>
+            </center>
+          </form>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Register;

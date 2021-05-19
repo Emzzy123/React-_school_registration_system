@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
-import Navbar from "./Navbar";
 import React, { useState, useEffect } from "react";
-import { Table } from "react-bootstrap";
+import { table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function StudentList() {
@@ -10,30 +9,38 @@ function StudentList() {
     fetchData();
   }, []);
   async function deleteOperation(id) {
-    let result = await fetch("http://127.0.0.1:8000/api/delete/" + id, {
-      method: "DELETE",
-    });
+    let result = await fetch(
+      "https://mi-linux.wlv.ac.uk/~2024684/ci3_restapi/index.php/user/delete_student/" +
+        id,
+      {
+        method: "DELETE",
+      }
+    );
     result = await result.json();
     console.warn(result);
     fetchData();
   }
   async function fetchData() {
-    let result = await fetch("http://127.0.0.1:8000/api/list");
+    let result = await fetch(
+      "https://mi-linux.wlv.ac.uk/~2024684/ci3_restapi/index.php/user/students"
+    );
     result = await result.json();
     setData(result);
   }
   return (
     <div>
-      <Navbar />
       <br />
       <center>
         {" "}
         <h1>List of Student</h1>
         <br />
       </center>
-      <div className="col-sm-8 offset-sm-2">
-        <Table style={{ color: "#fff", backgroundColor: "black" }}>
-          <tr style={{ color: "#A40E0F", backgroundColor: "black" }}>
+      <div className="col-sm-8 col-sm offset-sm-2">
+        <table
+          className="table table-hover table-responsive table-responsive-sm table-responsive-lg"
+          // style={{ color: "#fff", backgroundColor: "black" }}
+        >
+          <tr style={{ color: "#fff", backgroundColor: "#000" }}>
             <td>
               <strong>ID</strong>
             </td>
@@ -49,9 +56,9 @@ function StudentList() {
             <td>
               <strong>FACULTY</strong>
             </td>
-            <td>
+            {/* <td>
               <strong>IMAGE</strong>
-            </td>
+            </td> */}
             <td>
               <strong>OPERATIONS</strong>
             </td>
@@ -63,12 +70,12 @@ function StudentList() {
               <td>{item.student_id}</td>
               <td>{item.course_name}</td>
               <td>{item.faculty}</td>
-              <td>
+              {/* <td>
                 <img
                   style={{ width: 100 }}
                   src={"http://127.0.0.1:8000/" + item.file_path}
                 />
-              </td>
+              </td> */}
               <td>
                 <span
                   onClick={() => deleteOperation(item.id)}
@@ -82,7 +89,7 @@ function StudentList() {
               </td>
             </tr>
           ))}
-        </Table>
+        </table>
       </div>
     </div>
   );

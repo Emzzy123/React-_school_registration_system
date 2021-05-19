@@ -1,20 +1,55 @@
-import { Navbar, Nav } from "react-bootstrap";
+import React, { Component } from "react";
+import "./Header.css";
+import * as ReactBootStrap from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const Header = () => {
-  return (
-    <div>
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">School Registration System </Navbar.Brand>
-        <Nav className="mr-auto wrapper">
-          <Link to="/add">Add Student</Link>
-          <Link to="/update">Update Student</Link>
-          <Link to="/login">Student Login</Link>
-          <Link to="/register">Register Student</Link>
-        </Nav>
-      </Navbar>
-    </div>
-  );
-};
+class Header extends Component {
+  render() {
+    return (
+      <div>
+        <ReactBootStrap.Navbar collapseOnSelect expand="lg" className="App">
+          <ReactBootStrap.Navbar.Brand href="#home" className="text-light">
+            SCHOOL REGISTRATION SYSTEM
+          </ReactBootStrap.Navbar.Brand>
+          <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
+            <ReactBootStrap.Nav.Link className="text-light">
+              <Link
+                to="/login"
+                style={{ color: "#fff", textDecoration: "none" }}
+              >
+                Login
+              </Link>
+            </ReactBootStrap.Nav.Link>
+            <ReactBootStrap.Nav.Link className="text-light">
+              <Link
+                to="/register"
+                style={{ color: "#fff", textDecoration: "none" }}
+              >
+                Register
+              </Link>
+            </ReactBootStrap.Nav.Link>
+            <ReactBootStrap.Nav.Link className="text-light">
+              <Link to="/add" style={{ color: "#fff", textDecoration: "none" }}>
+                Add Student
+              </Link>
+            </ReactBootStrap.Nav.Link>
+            <ReactBootStrap.Nav.Link className="text-light">
+              <Link
+                to="/student"
+                style={{ color: "#fff", textDecoration: "none" }}
+              >
+                Student List
+              </Link>
+            </ReactBootStrap.Nav.Link>
+            <ReactBootStrap.Nav.Link href="#memes" className="text-light">
+              Search Student
+            </ReactBootStrap.Nav.Link>
+          </ReactBootStrap.Navbar.Collapse>
+        </ReactBootStrap.Navbar>
+      </div>
+    );
+  }
+}
 
 export default Header;

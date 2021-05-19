@@ -39,7 +39,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div>
+        <div className="NavBack">
           <ul class="socials">
             <IconContext.Provider value={{ color: "#2C1A2A" }}>
               <li>

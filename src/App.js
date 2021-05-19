@@ -1,47 +1,64 @@
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Header from "./Components/Header";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
-import AddStudent from "./Components/AddStudent";
-import UpdateStudent from "./Components/UpdateStudent";
 import Footer from "./Components/Footer";
-import Protected from "./Components/Protected";
+import AddStudent from "./Components/AddStudent";
 import StudentList from "./Components/StudentList";
-import SearchStudent from "./Components/SearchStudent";
 
-function App() {
-  return (
-    <div className="page-container">
-      <div className="content-wrap">
-        <Router>
-          <Switch>
-            <Route path="/login">
-              {" "}
-              <Login />{" "}
-            </Route>
-            <Route path="/register">
-              {" "}
-              <Register />{" "}
-            </Route>
-            <Route path="/add">
-              <Protected Cmp={AddStudent} />
-            </Route>
-            <Route path="/update/:id">
-              <Protected Cmp={UpdateStudent} />
-            </Route>
-            <Route path="/search">
-              <Protected Cmp={SearchStudent} />
-            </Route>
-            <Route path="/">
-              <Protected Cmp={StudentList} />
-            </Route>
-          </Switch>
-        </Router>
+class App extends Component {
+  render() {
+    return (
+      <div className="page-container">
+        <div className="content-wrap">
+          <Router>
+            <Header
+            // logged_in={this.state.logged_in}
+            // clicklogout={this.clicklogout}
+            />
+            <Switch>
+              <Route
+                path="/login"
+                component={() => (
+                  <Login
+                  // submitLogin={this.submitLogin}
+                  // logged_in={this.state.logged_in}
+                  />
+                )}
+              />
+              <Route
+                path="/register"
+                component={() => (
+                  <Register
+                  // logged_in={ this.state.logged_in }
+                  />
+                )}
+              />
+              <Route
+                path="/add"
+                component={() => (
+                  <AddStudent
+                  // logged_in={ this.state.logged_in }
+                  />
+                )}
+              />
+              <Route
+                path="/student"
+                component={() => (
+                  <StudentList
+                  // logged_in={ this.state.logged_in }
+                  />
+                )}
+              />
+            </Switch>
+          </Router>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

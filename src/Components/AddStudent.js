@@ -1,80 +1,98 @@
-import Navbar from "./Navbar";
-import { useState } from "react";
+import React, { Component } from "react";
+import Axios from "axios";
+import qs from "qs";
 
-function AddStudent() {
-  const [name, setName] = useState("");
-  const [student_id, setStudent_id] = useState("");
-  const [course_name, setCourse_name] = useState("");
-  const [file, setFile] = useState("");
-  const [faculty, setFaculty] = useState("");
+class Register extends Component {
+  state = {
+    name: "",
+    student_id: "",
+    course_name: "",
+    faculty: "",
+  };
 
-  async function addStudent() {
-    console.warn(name, student_id, course_name, file, faculty);
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("student_id", student_id);
-    formData.append("course_name", course_name);
-    formData.append("faculty", faculty);
-    formData.append("file", file);
-
-    let result = await fetch("http://127.0.0.1:8000/api/addstudent", {
-      method: "POST",
-      body: formData,
+  onChange = (e) => {
+    this.setState({
+      ...this.state,
+      [e.target.name]: e.target.value,
     });
-    alert("Data saved  successfully!!!!");
-  }
+  };
 
-  return (
-    <div>
-      <Navbar />
-      <div className="col-sm-6 offset-sm-3">
-        <center>
-          <h1>AddStudent Page</h1>
-        </center>
-        <br />
-        <input
-          type="text"
-          onChange={(e) => setName(e.target.value)}
-          className="form-control"
-          placeholder="name"
-        />
-        <br />
-        <input
-          type="text"
-          onChange={(e) => setStudent_id(e.target.value)}
-          className="form-control"
-          placeholder="Student id"
-        />
-        <br />
-        <input
-          type="text"
-          onChange={(e) => setCourse_name(e.target.value)}
-          className="form-control"
-          placeholder="Course name"
-        />
-        <br />
-        <input
-          type="text"
-          onChange={(e) => setFaculty(e.target.value)}
-          className="form-control"
-          placeholder="Faculty"
-        />
-        <br />
-        <input
-          type="file"
-          onChange={(e) => setFile(e.target.files[0])}
-          className="form-control"
-          placeholder="File"
-        />
-        <br />
-        <center>
-          <button onClick={addStudent} className="btn btn-primary">
-            Add Student
-          </button>
-        </center>
+  onSubmit = (e) => {
+    e.preventDefault();
+
+    const params = {
+      name: this.state.name,
+      student_id: this.state.student_id,
+      course_name: this.state.course_name,
+      faculty: this.state.faculty,
+    };
+
+    Axios.post(
+      "https://mi-linux.wlv.ac.uk/~2024684/ci3_restapi/index.php/user/addstudent",
+      qs.stringify(params)
+    ).then((resp) => {
+      console.log(resp);
+    });
+    alert("Registration Successful");
+  };
+
+  render() {
+    return (
+      <div>
+        <div className="col-sm-6 offset-sm-3">
+          <br />
+          <br />
+          <br />
+          <br />
+          <center>
+            <h1>Register student</h1>
+          </center>
+          <br />
+          <form onSubmit={this.onSubmit}>
+            <input
+              className="input form-control"
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={this.onChange}
+              placeholder="name"
+            />
+            <br />
+            <input
+              className="input form-control"
+              type="text"
+              name="student_id"
+              value={this.state.student_id}
+              onChange={this.onChange}
+              placeholder="student id"
+            />
+            <br />
+            <input
+              className="input form-control"
+              type="text"
+              name="course_name"
+              value={this.state.course_name}
+              onChange={this.onChange}
+              placeholder="course name"
+            />
+            <br />
+            <input
+              className="input form-control"
+              type="text"
+              name="faculty"
+              value={this.state.faculty}
+              onChange={this.onChange}
+              placeholder="faculty"
+            />
+            <br />
+            <center>
+              <button className="btn btn-success">Register Student</button>
+            </center>
+          </form>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
-export default AddStudent;
+export default Register;
