@@ -45,7 +45,7 @@ class Register extends Component {
           <br />
           <br />
           <center>
-            <h1>Register student</h1>
+            <h1>Add New Student</h1>
           </center>
           <br />
           <form onSubmit={this.onSubmit}>

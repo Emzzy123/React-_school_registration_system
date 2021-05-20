@@ -32,6 +32,7 @@ class Register extends Component {
     ).then((resp) => {
       console.log(resp);
     });
+    alert("Registration Successful");
   };
 
   render() {
@@ -42,6 +43,7 @@ class Register extends Component {
     return (
       <div>
         <div className="col-sm-6 offset-sm-3">
+          <br />
           <center>
             <h1>School Registration Page</h1>
           </center>
@@ -75,7 +77,7 @@ class Register extends Component {
             />
             <br />
             <center>
-              <button className="btn btn-success">Register</button>
+              <button className="btn btn-primary">Register</button>
             </center>
           </form>
         </div>
