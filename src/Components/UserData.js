@@ -6,7 +6,7 @@ class UserData extends Component {
     if (this.props.usersData.length === 0) {
       return (
         <tr>
-          <td colSpan="5">no data yet, add now</td>
+          <td colSpan="5">No Data Available, Go Add New Student</td>
         </tr>
       );
     }

@@ -1,30 +1,60 @@
-import Navbar from "./Navbar";
-import { useState } from "react";
+import React, { Component } from "react";
 import { Table } from "react-bootstrap";
+import Axios from "axios";
+import qs from "qs";
 
-function SearchStudent() {
-  const [data, setData] = useState([]);
-  async function search(key) {
-    console.warn(key);
-    let result = await fetch("http://127.0.0.1:8000/api/search/" + key);
-    result = await result.json();
-    console.warn(result);
-    setData(result);
-  }
-  return (
-    <div>
-      <Navbar />
-      <div className="col-sm-6 offset-sm-3">
-        <center>
+class SearchStudent extends Component {
+  state = {
+    name: "",
+    persons: [],
+  };
+
+  onChange = (e) => {
+    this.setState({
+      ...this.state,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+
+    const params = {
+      name: this.state.name,
+    };
+
+    Axios.post(
+      "https://mi-linux.wlv.ac.uk/~2024684/ci3_restapi/index.php/user/search",
+      qs.stringify(params)
+    ).then((resp) => {
+      const persons = resp.data;
+      this.setState({ persons });
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <div className="col-sm-6 offset-sm-3">
           <br />
-          <h1>Search Student</h1>
+          <center>
+            <h1>Search Student Record</h1>
+          </center>
           <br />
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search Student Name"
-            onChange={(e) => search(e.target.value)}
-          />
+          <form onSubmit={this.onSubmit}>
+            <input
+              className="input form-control"
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={this.onChange}
+              placeholder="name"
+            />
+            <br />
+            <center>
+              <button className="btn btn-success">Search Student</button>
+            </center>
+          </form>
           <br />
           <Table>
             <tr style={{ color: "#951b1e" }}>
@@ -43,30 +73,21 @@ function SearchStudent() {
               <td>
                 <strong>FACULTY</strong>
               </td>
-              <td>
-                <strong>IMAGE</strong>
-              </td>
             </tr>
-            {data.map((item) => (
+            {this.state.persons.map((person) => (
               <tr>
-                <td>{item.id}</td>
-                <td>{item.name}</td>
-                <td>{item.student_id}</td>
-                <td>{item.course_name}</td>
-                <td>{item.faculty}</td>
-                <td>
-                  <img
-                    style={{ width: 100 }}
-                    src={"http://127.0.0.1:8000/" + item.file_path}
-                  />
-                </td>
+                <td key={person.id}>{person.id}</td>
+                <td key={person.name}>{person.name}</td>
+                <td key={person.student_id}>{person.student_id}</td>
+                <td key={person.course_name}>{person.course_name}</td>
+                <td key={person.faculty}>{person.faculty}</td>
               </tr>
             ))}
           </Table>
-        </center>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default SearchStudent;

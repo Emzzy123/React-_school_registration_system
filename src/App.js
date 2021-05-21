@@ -7,10 +7,11 @@ import Register from "./Components/Register";
 import Footer from "./Components/Footer";
 import AddStudent from "./Components/AddStudent";
 import StudentList from "./Components/StudentList";
+import EditModal from "./Components/EditModal";
+import SearchStudent from "./Components/SearchStudent";
 
 import Axios from "axios";
 import qs from "qs";
-import EditModal from "./Components/EditModal";
 
 class App extends Component {
   state = {
@@ -29,14 +30,6 @@ class App extends Component {
 
   updateTableAfterUpdate = (e) => {
     this.showData();
-  };
-
-  clicklogout = (e) => {
-    localStorage.clear();
-    this.setState({
-      logged_in: !this.state.logged_in,
-      token_isValid: !this.state.token_isValid,
-    });
   };
 
   deleteData = (id) => {
@@ -76,22 +69,17 @@ class App extends Component {
                   </React.Fragment>
                 )}
               />
-              <Route path="/editstudent" component={() => <EditModal />} />
-              <Route path="/login" component={() => <Login />} />
               <Route
-                path="/register"
-                component={() => (
-                  <Register
-                  // logged_in={ this.state.logged_in }
-                  />
-                )}
+                path="/editstudent"
+                component={() => <EditModal usersData={this.state.usersData} />}
               />
+              <Route path="/login" component={() => <Login />} />
+              <Route path="/register" component={() => <Register />} />
+              <Route path="/add" component={() => <AddStudent />} />
               <Route
-                path="/add"
+                path="/searchstudent"
                 component={() => (
-                  <AddStudent
-                  // logged_in={ this.state.logged_in }
-                  />
+                  <SearchStudent usersData={this.state.usersData} />
                 )}
               />
             </Switch>

@@ -50,8 +50,13 @@ class Header extends Component {
                 Update Student
               </Link>
             </ReactBootStrap.Nav.Link>
-            <ReactBootStrap.Nav.Link href="#memes" className="text-light">
-              Search Student
+            <ReactBootStrap.Nav.Link className="text-light">
+              <Link
+                to="/searchstudent"
+                style={{ color: "#fff", textDecoration: "none" }}
+              >
+                Student Record
+              </Link>
             </ReactBootStrap.Nav.Link>
           </ReactBootStrap.Navbar.Collapse>
         </ReactBootStrap.Navbar>

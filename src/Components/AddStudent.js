@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Axios from "axios";
 import qs from "qs";
 
-class Register extends Component {
+class AddStudent extends Component {
   state = {
     name: "",
     student_id: "",
@@ -95,4 +95,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default AddStudent;

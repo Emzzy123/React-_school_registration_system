@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import Axios from "axios";
 import qs from "qs";
 
@@ -44,11 +45,14 @@ class EditModal extends Component {
       show: !this.state.show,
     });
   }
+
   render() {
     return (
       <div>
-        <Modal show={this.state.show} onHide={() => this.handleModal()}>
-          <Modal.Header closeButton>Edit Student</Modal.Header>
+        <Modal show={this.state.show} backdrop="static">
+          <Modal.Header style={{ color: "#fff", background: "#7c051f" }}>
+            <span className="font-weight">Edit Student</span>
+          </Modal.Header>
           <Modal.Body>
             <form onSubmit={this.onSubmit}>
               <input
@@ -97,18 +101,18 @@ class EditModal extends Component {
               />
               <br />
               <button type="submit" className="btn btn-success">
-                Edit
+                Update Student
               </button>
             </form>
           </Modal.Body>
           <Modal.Footer>
-            <Button
-              onClick={() => {
-                this.handleModal();
-              }}
+            <Link
+              to={"/student"}
+              style={{ color: "#fff", background: "#7c051f" }}
+              className="editclose"
             >
-              Close Modal
-            </Button>
+              <span>Close</span>
+            </Link>
           </Modal.Footer>
         </Modal>
       </div>
