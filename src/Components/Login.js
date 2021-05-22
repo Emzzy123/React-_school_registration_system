@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import { Form, Button } from "react-bootstrap";
+import "./login.css";
 
-class Login extends Component {
+export class Login extends Component {
   state = {
     email: "",
     password: "",
@@ -16,7 +18,13 @@ class Login extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    this.props.submitLogin(this.state.username, this.state.password);
+
+    this.props.submitLogin(this.state.email, this.state.password);
+
+    this.setState({
+      email: "",
+      password: "",
+    });
   };
 
   render() {
@@ -29,32 +37,42 @@ class Login extends Component {
         <div className="col-sm-6 offset-sm-3">
           <br />
           <center>
-            <h1>School Login Page</h1>
+            <h1>Login Page</h1>
           </center>
           <br />
-          <form onSubmit={this.onSubmit}>
-            <input
-              className="input form-control"
-              type="text"
-              name="email"
-              value={this.state.email}
-              onChange={this.onChange}
-              placeholder="email"
-            />
-            <br />
-            <input
-              className="input form-control"
-              type="password"
-              name="password"
-              value={this.state.password}
-              onChange={this.onChange}
-              placeholder="password"
-            />
-            <br />
-            <center>
-              <button className="btn btn-primary">Login</button>
-            </center>
-          </form>
+          <Form onSubmit={this.onSubmit} className="form-container">
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label className="text-light">Email address</Form.Label>
+              <input
+                className="form-control"
+                type="email"
+                placeholder="Enter email"
+                name="email"
+                value={this.state.email}
+                onChange={this.onChange}
+              />
+              <Form.Text className="text-muted">
+                <span className="text-light">
+                  We'll never share your email with anyone else.
+                </span>
+              </Form.Text>
+            </Form.Group>
+
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label className="text-light">Password</Form.Label>
+              <input
+                className="form-control"
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={this.state.password}
+                onChange={this.onChange}
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
         </div>
       </div>
     );

@@ -1,12 +1,12 @@
 root {
-  --red: #951b1e;
+  --red: #ba0d2a;
   --white: #ffffff;
   --black: #000;
 }
 
 .main-footer {
   color: var(--white);
-  background-color: #7c051f;
+  background-color: #ba0d2a;
   font-weight: bold;
   padding-top: 3em;
   bottom: 0;

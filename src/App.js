@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import Header from "./Components/Header";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
@@ -16,11 +17,56 @@ import qs from "qs";
 class App extends Component {
   state = {
     usersData: [],
+    logged_in: false,
+    token_isValid: false,
   };
 
   componentDidMount() {
     this.showData();
+    this.LoggedIn();
   }
+  LoggedIn() {
+    var token = localStorage.getItem("token");
+    this.checkToken(token);
+  }
+
+  checkToken = (token) => {
+    const params = {
+      token: token,
+    };
+
+    Axios.post(
+      "https://mi-linux.wlv.ac.uk/~2024684/ci3_restapi/index.php/user/check-token",
+      qs.stringify(params)
+    ).then((resp) => {
+      if (resp.data.valid === true) {
+        this.setState({
+          token_isValid: !this.state.token_isValid,
+          logged_in: !this.state.logged_in,
+        });
+      }
+    });
+  };
+
+  submitLogin = (email, password) => {
+    const params = {
+      email: email,
+      password: password,
+    };
+
+    Axios.post(
+      "https://mi-linux.wlv.ac.uk/~2024684/ci3_restapi/index.php/user/login",
+      qs.stringify(params)
+    ).then((resp) => {
+      if (resp.data.logged_in === true && resp.data.token !== "") {
+        localStorage.setItem("token", resp.data.token);
+        this.setState({
+          token_isValid: !this.state.token_isValid,
+          logged_in: !this.state.logged_in,
+        });
+      }
+    });
+  };
 
   showData() {
     Axios.get(
@@ -31,6 +77,29 @@ class App extends Component {
   updateTableAfterUpdate = (e) => {
     this.showData();
   };
+  clicklogout = (e) => {
+    localStorage.clear();
+    this.setState({
+      logged_in: !this.state.logged_in,
+      token_isValid: !this.state.token_isValid,
+    });
+  };
+
+  // submitData = (name, student_id, course_name, faculty) => {
+  //   const params = {
+  //     name: name,
+  //     student_id: student_id,
+  //     course_name: course_name,
+  //     faculty: faculty,
+  //   };
+
+  //   Axios.post(
+  //     "https://mi-linux.wlv.ac.uk/~2024684/ci3_restapi/index.php/user/addstudent",
+  //     qs.stringify(params)
+  //   ).then((resp) => {
+  //     this.showData();
+  //   });
+  // };
 
   deleteData = (id) => {
     const that = this;
@@ -65,6 +134,7 @@ class App extends Component {
                       usersData={this.state.usersData}
                       deleteData={this.deleteData}
                       updateTableAfterUpdate={this.updateTableAfterUpdate}
+                      logged_in={this.state.logged_in}
                     />
                   </React.Fragment>
                 )}
@@ -73,8 +143,19 @@ class App extends Component {
                 path="/editstudent"
                 component={() => <EditModal usersData={this.state.usersData} />}
               />
-              <Route path="/login" component={() => <Login />} />
-              <Route path="/register" component={() => <Register />} />
+              <Route
+                path="/login"
+                component={() => (
+                  <Login
+                    submitLogin={this.submitLogin}
+                    logged_in={this.state.logged_in}
+                  />
+                )}
+              />
+              <Route
+                path="/register"
+                component={() => <Register logged_in={this.state.logged_in} />}
+              />
               <Route path="/add" component={() => <AddStudent />} />
               <Route
                 path="/searchstudent"

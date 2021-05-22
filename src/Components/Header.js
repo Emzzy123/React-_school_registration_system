@@ -8,8 +8,10 @@ class Header extends Component {
     return (
       <div>
         <ReactBootStrap.Navbar collapseOnSelect expand="lg" className="App">
-          <ReactBootStrap.Navbar.Brand href="#home" className="text-light">
-            SCHOOL REGISTRATION SYSTEM
+          <ReactBootStrap.Navbar.Brand className="text-light">
+            <Link to="/" style={{ color: "#fff", textDecoration: "none" }}>
+              WOLVERHAMPTON UNIVERSITY
+            </Link>
           </ReactBootStrap.Navbar.Brand>
           <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">

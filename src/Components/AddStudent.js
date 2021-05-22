@@ -86,7 +86,7 @@ class AddStudent extends Component {
             />
             <br />
             <center>
-              <button className="btn btn-success">Register Student</button>
+              <button className="btn btn-success">Add Student</button>
             </center>
           </form>
         </div>
