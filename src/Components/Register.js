@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import "./login.css";
 import Axios from "axios";
@@ -39,17 +39,19 @@ class Register extends Component {
 
   render() {
     if (this.props.logged_in) {
-      return <Redirect to="/" />;
+      return <Redirect to="/add" />;
     }
     return (
       <div>
         <div className="col-sm-6 offset-sm-3">
           <br />
-          <center>
-            <h1>School Registration Page</h1>
-          </center>
+          <br />
+          <br />
           <br />
           <Form onSubmit={this.onSubmit} className="form-container">
+            <center>
+              <h1 className="text-light">Register</h1>
+            </center>
             <Form.Group controlId="formBasicEmail">
               <Form.Label className="text-light">Name</Form.Label>
               <input
@@ -88,9 +90,24 @@ class Register extends Component {
                 onChange={this.onChange}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
+            <center>
+              {" "}
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </center>
+            <hr className="bg-light" />
+            <Form.Text className="text-muted float-right">
+              <span className="text-light font-weight-italic ">
+                Already have an account?
+                <Link
+                  to={"/login"}
+                  style={{ color: "#fff", background: "#ba0d2a" }}
+                >
+                  <span className="text-primary"> Login here</span>
+                </Link>
+              </span>
+            </Form.Text>
           </Form>
         </div>
       </div>

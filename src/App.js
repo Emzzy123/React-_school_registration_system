@@ -77,6 +77,7 @@ class App extends Component {
   updateTableAfterUpdate = (e) => {
     this.showData();
   };
+
   clicklogout = (e) => {
     localStorage.clear();
     this.setState({
@@ -85,21 +86,21 @@ class App extends Component {
     });
   };
 
-  // submitData = (name, student_id, course_name, faculty) => {
-  //   const params = {
-  //     name: name,
-  //     student_id: student_id,
-  //     course_name: course_name,
-  //     faculty: faculty,
-  //   };
+  submitData = (name, student_id, course_name, faculty) => {
+    const params = {
+      name: name,
+      student_id: student_id,
+      course_name: course_name,
+      faculty: faculty,
+    };
 
-  //   Axios.post(
-  //     "https://mi-linux.wlv.ac.uk/~2024684/ci3_restapi/index.php/user/addstudent",
-  //     qs.stringify(params)
-  //   ).then((resp) => {
-  //     this.showData();
-  //   });
-  // };
+    Axios.post(
+      "https://mi-linux.wlv.ac.uk/~2024684/ci3_restapi/index.php/user/addstudent",
+      qs.stringify(params)
+    ).then((resp) => {
+      this.showData();
+    });
+  };
 
   deleteData = (id) => {
     const that = this;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import "./login.css";
 
@@ -29,18 +29,20 @@ export class Login extends Component {
 
   render() {
     if (this.props.logged_in) {
-      return <Redirect to="/" />;
+      return <Redirect to="/add" />;
     }
 
     return (
       <div>
         <div className="col-sm-6 offset-sm-3">
           <br />
-          <center>
-            <h1>Login Page</h1>
-          </center>
+          <br />
+          <br />
           <br />
           <Form onSubmit={this.onSubmit} className="form-container">
+            <center>
+              <h1 className="text-light">Login</h1>
+            </center>
             <Form.Group controlId="formBasicEmail">
               <Form.Label className="text-light">Email address</Form.Label>
               <input
@@ -69,9 +71,24 @@ export class Login extends Component {
                 onChange={this.onChange}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
+            <center>
+              {" "}
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </center>
+            <hr className="bg-light" />
+            <Form.Text className="text-muted">
+              <span className="text-light font-weight-italic float-right">
+                Dont have an account?
+                <Link
+                  to={"/register"}
+                  style={{ color: "#fff", background: "#ba0d2a" }}
+                >
+                  <span className="text-primary"> Register</span>
+                </Link>
+              </span>
+            </Form.Text>
           </Form>
         </div>
       </div>

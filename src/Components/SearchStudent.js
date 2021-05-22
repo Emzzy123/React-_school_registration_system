@@ -57,7 +57,7 @@ class SearchStudent extends Component {
           </form>
           <br />
           <Table>
-            <tr style={{ color: "#951b1e" }}>
+            <tr style={{ color: "#ba0d2a" }}>
               <td>
                 <strong>ID</strong>
               </td>

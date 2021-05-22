@@ -50,7 +50,7 @@ class EditModal extends Component {
     return (
       <div>
         <Modal show={this.state.show} backdrop="static">
-          <Modal.Header style={{ color: "#fff", background: "#7c051f" }}>
+          <Modal.Header style={{ color: "#fff", background: "#ba0d2a" }}>
             <span className="font-weight">Edit Student</span>
           </Modal.Header>
           <Modal.Body>
@@ -108,7 +108,7 @@ class EditModal extends Component {
           <Modal.Footer>
             <Link
               to={"/student"}
-              style={{ color: "#fff", background: "#7c051f" }}
+              style={{ color: "#fff", background: "#ba0d2a" }}
               className="editclose"
             >
               <span>Close</span>
