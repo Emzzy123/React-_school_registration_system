@@ -27,6 +27,7 @@ class App extends Component {
   }
   LoggedIn() {
     var token = localStorage.getItem("token");
+    var userinfo = localStorage.getItem("user-info");
     this.checkToken(token);
   }
 
@@ -60,6 +61,7 @@ class App extends Component {
     ).then((resp) => {
       if (resp.data.logged_in === true && resp.data.token !== "") {
         localStorage.setItem("token", resp.data.token);
+        localStorage.setItem("user-info", resp.data.name);
         this.setState({
           token_isValid: !this.state.token_isValid,
           logged_in: !this.state.logged_in,
@@ -123,7 +125,10 @@ class App extends Component {
       <div className="page-container">
         <div className="content-wrap">
           <Router>
-            <Header />
+            <Header
+              logged_in={this.state.logged_in}
+              clicklogout={this.clicklogout}
+            />
             <Switch>
               <Route
                 exact

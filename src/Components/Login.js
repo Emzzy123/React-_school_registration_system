@@ -31,7 +31,6 @@ export class Login extends Component {
     if (this.props.logged_in) {
       return <Redirect to="/add" />;
     }
-
     return (
       <div>
         <div className="col-sm-6 offset-sm-3">
