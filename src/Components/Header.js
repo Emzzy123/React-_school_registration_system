@@ -16,7 +16,7 @@ function Header() {
     <div>
       <Navbar collapseOnSelect expand="lg" className="App">
         <Navbar.Brand className="text-light">
-          <Link to="/login" style={{ color: "#fff", textDecoration: "none" }}>
+          <Link to="#" style={{ color: "#fff", textDecoration: "none" }}>
             WOLVERHAMPTON UNIVERSITY
           </Link>
         </Navbar.Brand>
@@ -83,8 +83,7 @@ function Header() {
             <Nav>
               <NavDropdown title={user} id="nav-dropdown">
                 <NavDropdown.Item id="nav-dropdown1" onClick={logout}>
-                  {" "}
-                  Logout{" "}
+                  Logout
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>

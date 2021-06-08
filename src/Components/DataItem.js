@@ -21,9 +21,9 @@ class DataItem extends Component {
               <span className="update">Update</span>
             </Link>
           </span>
-          <span>
+          {/* <span>
             <strong>|</strong>
-          </span>
+          </span> */}
           <span>
             <span onClick={(e) => this.clickDelete(id)} className="delete">
               Delete
