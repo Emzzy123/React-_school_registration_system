@@ -100,10 +100,7 @@ class Register extends Component {
             <Form.Text className="text-muted float-right">
               <span className="text-light font-weight-italic ">
                 Already have an account?
-                <Link
-                  to={"/login"}
-                  style={{ color: "#fff", background: "#ba0d2a" }}
-                >
+                <Link to={"/"} style={{ color: "#fff", background: "#ba0d2a" }}>
                   <span className="text-primary"> Login here</span>
                 </Link>
               </span>

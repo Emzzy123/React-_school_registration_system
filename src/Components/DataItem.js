@@ -11,6 +11,7 @@ class DataItem extends Component {
 
     return (
       <tr>
+        <td>{id}</td>
         <td>{name}</td>
         <td>{student_id}</td>
         <td>{course_name}</td>
@@ -21,9 +22,6 @@ class DataItem extends Component {
               <span className="update">Update</span>
             </Link>
           </span>
-          {/* <span>
-            <strong>|</strong>
-          </span> */}
           <span>
             <span onClick={(e) => this.clickDelete(id)} className="delete">
               Delete

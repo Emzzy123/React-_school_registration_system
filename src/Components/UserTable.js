@@ -10,6 +10,7 @@ class UserTable extends Component {
           <table className="table table-hover table-stripped table-responsive-lg">
             <thead className="thead-dark">
               <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Student ID</th>
                 <th>Course Name</th>
