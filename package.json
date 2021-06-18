@@ -5,10 +5,12 @@
   "homepage": ".",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
-    "@testing-library/react": "^11.2.6",
+    "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "jasmine-enzyme": "^7.1.2",
+    "jest": "^27.0.4",
     "mdbreact": "^5.0.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
@@ -26,7 +28,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -46,5 +48,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "jasmine": "^3.7.0"
   }
 }
