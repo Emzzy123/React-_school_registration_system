@@ -38,7 +38,7 @@ class AddStudent extends Component {
 
   render() {
     return (
-      <div>
+      <div data-testid="add-1">
         <div className="col-sm-6 offset-sm-3">
           <br />
           <br />

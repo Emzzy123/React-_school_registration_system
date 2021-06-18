@@ -1,16 +1,15 @@
 {
-  "name": "school-registration-system",
+  "name": "testingchromeless",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "http://.",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
-    "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "chromeless": "^1.5.2",
     "jasmine-enzyme": "^7.1.2",
-    "jest": "^27.0.4",
     "mdbreact": "^5.0.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
@@ -28,7 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -50,6 +49,20 @@
     ]
   },
   "devDependencies": {
-    "jasmine": "^3.7.0"
-  }
+    "@testing-library/react": "^11.2.7",
+    "jasmine": "^3.7.0",
+    "react-test-renderer": "^17.0.2"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git-srv.wlv.ac.uk/gitlab/2024684/school_registration_system.git"
+  },
+  "author": "",
+  "license": "ISC"
 }
