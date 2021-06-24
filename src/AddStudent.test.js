@@ -1,4 +1,4 @@
-import { render, screen, cleanup } from "@testing-library/react";
+import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 import AddStudent from "./Components/AddStudent";
 import TestRenderer from "react-test-renderer"; //
 
@@ -18,3 +18,17 @@ const testRenderer = TestRenderer.create(
 );
 
 console.log(testRenderer.toJSON());
+
+it("checkButtonRender", () => {
+  const { queryByTitle } = render(<AddStudent />);
+  const btn = queryByTitle("dummyButton");
+  expect(btn).toBeTruthy();
+});
+
+describe("clickButton", () => {
+  const { queryByTitle } = render(<AddStudent />);
+  const btn = queryByTitle("dummyButton");
+  expect(btn.onmouseenter).toBe("Press Here or click");
+  fireEvent.click(btn);
+  expect(btn.onmouseleave).toBe("You Clicked");
+});

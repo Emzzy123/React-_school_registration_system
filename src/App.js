@@ -19,17 +19,17 @@ class App extends Component {
   componentDidMount() {
     this.showData();
   }
-
+  //show data
   showData() {
     Axios.get(
       "https://mi-linux.wlv.ac.uk/~2024684/ci3_restapi/index.php/user/students"
     ).then((resp) => this.setState({ usersData: resp.data }));
   }
-
+  //update data
   updateTableAfterUpdate = (e) => {
     this.showData();
   };
-
+  //submitdata
   submitData = (name, student_id, course_name, faculty) => {
     const params = {
       name: name,
@@ -46,6 +46,7 @@ class App extends Component {
     });
   };
 
+  //delete data
   deleteData = (id) => {
     const that = this;
     const params = {
